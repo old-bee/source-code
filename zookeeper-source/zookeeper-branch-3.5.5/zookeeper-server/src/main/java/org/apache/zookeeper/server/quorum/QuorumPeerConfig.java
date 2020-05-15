@@ -55,6 +55,10 @@ import org.apache.zookeeper.server.quorum.flexible.QuorumMaj;
 import org.apache.zookeeper.server.quorum.flexible.QuorumVerifier;
 import org.apache.zookeeper.server.util.VerifyingFileFactory;
 
+
+/**
+ * zk配置类 zk配置文件的配置将读入保存在此类中
+ */
 @InterfaceAudience.Public
 public class QuorumPeerConfig {
     private static final Logger LOG = LoggerFactory.getLogger(QuorumPeerConfig.class);
@@ -133,20 +137,22 @@ public class QuorumPeerConfig {
         LOG.info("Reading configuration from: " + path);
        
         try {
+            //读取配置文件
             File configFile = (new VerifyingFileFactory.Builder(LOG)
                 .warnForRelativePath()
                 .failForNonExistingPath()
                 .build()).create(path);
-                
+
             Properties cfg = new Properties();
             FileInputStream in = new FileInputStream(configFile);
             try {
+                //将配置信息读入放入Properties中
                 cfg.load(in);
                 configFileStr = path;
             } finally {
                 in.close();
             }
-            
+            //解析properties将配置信息保存并校验配置的合法性
             parseProperties(cfg);
         } catch (IOException e) {
             throw new ConfigException("Error processing " + path, e);
@@ -329,6 +335,7 @@ public class QuorumPeerConfig {
             } else if (key.equals("quorum.cnxn.threads.size")) {
                 quorumCnxnThreadsSize = Integer.parseInt(value);
             } else {
+                //"server.3" -> "localhost:2289:3389" 将其存入系统属性中
                 System.setProperty("zookeeper." + key, value);
             }
         }

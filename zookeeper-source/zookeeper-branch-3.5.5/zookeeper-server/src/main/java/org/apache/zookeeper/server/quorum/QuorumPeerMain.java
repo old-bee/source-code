@@ -77,6 +77,7 @@ public class QuorumPeerMain {
      * @param args path to the configfile
      */
     public static void main(String[] args) {
+        //主启动类
         QuorumPeerMain main = new QuorumPeerMain();
         try {
             main.initializeAndRun(args);
@@ -108,8 +109,10 @@ public class QuorumPeerMain {
     protected void initializeAndRun(String[] args)
         throws ConfigException, IOException, AdminServerException
     {
+        //zookeeper配置信息
         QuorumPeerConfig config = new QuorumPeerConfig();
         if (args.length == 1) {
+            //解析配置文件
             config.parse(args[0]);
         }
 

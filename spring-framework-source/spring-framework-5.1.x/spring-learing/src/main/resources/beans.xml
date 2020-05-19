@@ -8,5 +8,13 @@
 		<!-- additional collaborators and configuration for this bean go here -->
 	</bean>
 
+	<!--<bean id="myBeanFactoryPostProcessor" class="service.bfpp.UserServiceBFPP">
+
+	</bean>-->
+
+	<bean id="addressService" class="service.AddressService">
+
+	</bean>
+
 
 </beans>

@@ -523,7 +523,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			// Prepare this context for refreshing.
 			prepareRefresh();
 
-			// 获取一个新的BeanFactory
+			// 获取一个新的BeanFactory 对于xmlApplicationContext 会在此步解析
 			// 解析配置文件 这步完成后后会将配置文件中的<bean/>解析为BeanDefinition注册到BeanFactory中
 			// 1、销毁原来的bean，关闭原来的工程
 			// 2、初始化一个姓工程
@@ -547,6 +547,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				// Allows post-processing of the bean factory in context subclasses.
 				postProcessBeanFactory(beanFactory);
 
+				//对于AnnotationApplicationContext 会在此步扫描为BeanDefinition注册到BeanFactory中
 				//调用BeanFactoryPostProcessor各个实现类的postProcessBeanFactory方法
 				// Invoke factory processors registered as beans in the context.
 				invokeBeanFactoryPostProcessors(beanFactory);

@@ -1,4 +1,4 @@
-package service;
+package xml.service;
 
 /**
  * @Auther: lichangkai
@@ -7,7 +7,12 @@ package service;
  */
 public class AddressService {
 
-	public AddressService() {
+
+	private UserService userService;
+
+	public AddressService(UserService userService) {
+		this.userService = userService;
 		System.out.println("AddressService 实例化");
 	}
+
 }

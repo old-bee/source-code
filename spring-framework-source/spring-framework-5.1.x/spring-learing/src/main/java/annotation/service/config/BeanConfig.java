@@ -1,4 +1,4 @@
-package config;
+package annotation.service.config;
 
 import org.springframework.context.annotation.ComponentScan;
 
@@ -7,6 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
  * @Date: 2020/5/19
  * @Description:
  */
-@ComponentScan(basePackages = "service")
+@ComponentScan(basePackages = "annotation.service")
 public class BeanConfig {
 }

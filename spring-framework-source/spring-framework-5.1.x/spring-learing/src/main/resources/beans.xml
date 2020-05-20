@@ -4,16 +4,46 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="userService" class="service.UserService">
+	<bean id="userService" class="xml.service.UserService">
 		<!-- additional collaborators and configuration for this bean go here -->
+		<property name="addressService" ref="addressService"></property>
+		<property name="ints">
+			<array>
+				<value>1</value>
+				<value>2</value>
+				<value>3</value>
+			</array>
+		</property>
+		<property name="list">
+			<list>
+				<value>aaa</value>
+				<value>aaa</value>
+				<value>bbb</value>
+				<value>ccc</value>
+			</list>
+		</property>
+		<property name="set">
+			<set>
+				<value>aa</value>
+				<value>bb</value>
+				<value>cc</value>
+				<value>aa</value>
+			</set>
+		</property>
+		<property name="map">
+			<map>
+				<entry key="a" value="a"></entry>
+				<entry key="b" value-ref="addressService"></entry>
+			</map>
+		</property>
 	</bean>
 
-	<!--<bean id="myBeanFactoryPostProcessor" class="service.bfpp.UserServiceBFPP">
+	<!--<bean id="myBeanFactoryPostProcessor" class="xml.service.bfpp.UserServiceBFPP">
 
 	</bean>-->
 
-	<bean id="addressService" class="service.AddressService">
-
+	<bean id="addressService" class="xml.service.AddressService">
+		<constructor-arg name="userService" ref="userService"></constructor-arg>
 	</bean>
 
 

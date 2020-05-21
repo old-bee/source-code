@@ -1,6 +1,7 @@
 package annotation.service.config;
 
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
  * @Auther: lichangkai
@@ -8,5 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
  * @Description:
  */
 @ComponentScan(basePackages = "annotation.service")
+@EnableAspectJAutoProxy
 public class BeanConfig {
 }

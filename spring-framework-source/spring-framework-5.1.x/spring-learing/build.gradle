@@ -15,4 +15,5 @@ dependencies {
     /*compile project(':spring-core')*/
     compile project(':spring-context')
     compile project(':spring-instrument')
+    compile ("org.aspectj:aspectjweaver:1.9.5")
 }

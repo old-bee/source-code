@@ -16,4 +16,7 @@ dependencies {
     compile project(':spring-context')
     compile project(':spring-instrument')
     compile ("org.aspectj:aspectjweaver:1.9.5")
+    // https://mvnrepository.com/artifact/org.openjdk.jol/jol-core
+    compile group: 'org.openjdk.jol', name: 'jol-core', version: '0.10'
+
 }

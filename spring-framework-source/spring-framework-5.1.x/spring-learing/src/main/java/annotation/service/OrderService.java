@@ -6,6 +6,8 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -21,6 +23,7 @@ public class OrderService implements ApplicationContextAware,InitializingBean,Di
 
 	@Autowired
 	private PaymentService paymentService;
+
 
 	public OrderService() {
 		System.out.println("OrderService 实例化");
@@ -40,12 +43,17 @@ public class OrderService implements ApplicationContextAware,InitializingBean,Di
 	}
 
 	@PostConstruct
-	public void init() {
-		System.out.println(this.toString()+"\tinit() 执行");
+	public void postConstruct() {
+		System.out.println(this.toString()+"\tpostConstruct() 执行");
 	}
 
 	@PreDestroy
-	public void destroy() {
+	public void preDestroy() {
+		System.out.println(this.toString()+"\tpreDestroy() 执行");
+	}
+
+	@Override
+	public void destroy() throws Exception {
 		System.out.println(this.toString()+"\tdestroy() 执行");
 	}
 
